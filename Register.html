@@ -3,9 +3,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>הרשמה וכניסה</title>
+    <style>
+        body {
+          display: flex;
+          justify-content: space-between;
+        }
+        form {
+          width: 45%;
+          margin: 20px;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+        label {
+          display: block;
+          margin-bottom: 10px;
+        }
+        input[type="text"], input[type="password"] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        input[type="submit"] {
+          width: 100%;
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        input[type="submit"]:hover {
+          background-color: #45a049;
+        }
+      </style>
 </head>
 <body>
-    
+    <form action="/register" method="POST">
+        <h1>Registration</h1>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <input type="submit" value="Submit">
+      </form> 
+      <form action="/signin" method="POST">
+        <h1>Sign In</h1>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <input type="submit" value="Submit">
+      </form> 
 </body>
 </html>
