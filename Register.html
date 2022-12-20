@@ -1,66 +1,51 @@
 <html lang="he" dir="rtl">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="TopNavBar.css">
+    <link rel="stylesheet" href="Register.css">
+
     <title>הרשמה וכניסה</title>
     <style>
-        body {
-          display: flex;
-          justify-content: space-between;
-        }
-        form {
-          width: 45%;
-          margin: 20px;
-          padding: 20px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
-        label {
-          display: block;
-          margin-bottom: 10px;
-        }
-        input[type="text"], input[type="password"] {
-          width: 100%;
-          padding: 12px 20px;
-          margin: 8px 0;
-          box-sizing: border-box;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-        input[type="submit"] {
-          width: 100%;
-          background-color: #4CAF50;
-          color: white;
-          padding: 14px 20px;
-          margin: 8px 0;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-        input[type="submit"]:hover {
-          background-color: #45a049;
-        }
+        
       </style>
-</head>
-<body>
-    <form action="/register" method="POST">
-        <h1>Registration</h1>
-        <label for="username">Username:</label><br>
+  </head>
+  <body>
+    <header>
+      <div class="topnav" id="myTopnav">
+        <a href="./Index.html">דף הבית</a>
+        <a href="./Register.html" class="active">הרשמה/כניסה</a>
+        <a href="./Game-1.html">משחק שמור 1</a>
+        <a href="./Game-2.html">משחק שמור 2</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <form action="/register" method="POST">
+        <h1>הרשמה</h1>
+        <label for="username">שם משתמש:</label><br>
         <input type="text" id="username" name="username"><br>
-        <label for="email">Email:</label><br>
+        <label for="email">כתובת אימייל:</label><br>
         <input type="text" id="email" name="email"><br>
-        <label for="password">Password:</label><br>
+        <label for="password">סיסמה:</label><br>
         <input type="password" id="password" name="password"><br>
-        <input type="submit" value="Submit">
-      </form> 
+        <input type="submit" value="הרשמה">
+      </form>
       <form action="/signin" method="POST">
-        <h1>Sign In</h1>
-        <label for="username">Username:</label><br>
+        <h1>התחברות</h1>
+        <label for="username">שם משתמש:</label><br>
         <input type="text" id="username" name="username"><br>
-        <label for="password">Password:</label><br>
+        <label for="password">סיסמה:</label><br>
         <input type="password" id="password" name="password"><br>
-        <input type="submit" value="Submit">
-      </form> 
-</body>
+        <input type="submit" value="כניסה">
+      </form>
+    </main>
+    
+  </body>
 </html>
