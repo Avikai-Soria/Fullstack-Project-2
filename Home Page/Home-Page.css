@@ -1,1 +1,58 @@
 @import url('./../BaseCss.css');
+
+h1{
+    font-size: 40px;
+    text-align: center;
+}
+
+h2{
+    font-size: 25px;
+    padding: 0 0.5rem;
+}
+
+/* ----- Top Games ------ */
+
+.top-games{
+    margin-top: 2rem;
+}
+
+.top-games img{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 2rem;
+    padding: 1rem;
+}
+
+/* ----- Last Played ------ */
+#last-played { 
+    margin-bottom: 1rem;
+    overflow: scroll; 
+    width: 100%; 
+    overflow-y: hidden;
+}
+
+#last-played-innerwrapper { 
+    width: 1520px;
+}
+
+#last-played img{
+    height: 12rem;
+    width: 12rem;
+    border-radius: 2rem;
+    padding: 0.5rem;
+}
+
+/* ----- Games Grid ------ */
+.games-grid {
+    flex-wrap: wrap;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: 70rem;
+}
+
+.games-grid img{
+    width: 7rem;
+    height: 7rem;
+    padding: 0.3rem;
+    border-radius: 2rem;
+}
