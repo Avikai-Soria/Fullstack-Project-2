@@ -1,0 +1,15 @@
+@import url('./../BaseCss.css');
+
+.apple{
+    background-color: rgb(255, 0, 0);
+}
+
+.snake{
+
+}
+
+.area{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(39, 39, 39);
+}
