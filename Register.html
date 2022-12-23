@@ -27,25 +27,47 @@
     </header>
 
     <main>
-      <form action="./Index.html" method="POST">
+      <form class="container" id="registration-form">
         <h1>הרשמה</h1>
-        <label for="username">שם משתמש:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="email">כתובת אימייל:</label><br>
-        <input type="text" id="email" name="email"><br>
-        <label for="password">סיסמה:</label><br>
-        <input type="password" id="password" name="password"><br>
-        <input type="submit" value="הרשמה">
+        <div class="form-field">
+          <label for="registerUsername">שם משתמש:</label>
+          <input type="text" id="registerUsername" name="registerUsername">
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="registerEmail">כתובת אימייל:</label><br>
+          <input type="text" id="registerEmail" name="registerEmail">
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="password">סיסמה:</label><br>
+          <input type="password" id="registerPassword" name="registerPassword">
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <label for="confirmPassword">אמת סיסמה:</label>
+          <input type="password" name="confirmPassword" id="confirmPassword">
+          <small></small>
+        </div>
+
+        <div class="form-field">
+          <input onclick="registerUser()" type="submit" value="הרשמה">
+        </div>
+
       </form>
-      <form action="./Index.html" method="POST">
+      <form class="container" action="./Index.html" method="POST">
         <h1>התחברות</h1>
-        <label for="username">שם משתמש:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">סיסמה:</label><br>
-        <input type="password" id="password" name="password"><br>
+        <label for="username">שם משתמש:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">סיסמה:</label>
+        <input type="password" id="password" name="password">
         <input type="submit" value="כניסה">
       </form>
+      <script src="./Register.js"></script>
     </main>
-    
+
   </body>
 </html>
