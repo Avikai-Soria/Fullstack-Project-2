@@ -1,31 +1,16 @@
-// Importing functions from fs to write and read files
-const fs = require('fs');
-
-
-class Player {
-    constructor(username, password, email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.winCount = 0;
-        this.timePlayed = 0;
-        this.totalScore = 0;
-    }
-}
-
 class Players {
     constructor() {
-        const data = fs.readFileSync('players.json', 'utf8');
-        this.arrayOfPlayers = JSON.parse(data);
+        this.arrayOfPlayers = [];
     }
 
     addPlayer(newPlayer) {
         for (const player of this.arrayOfPlayers) {
-            if (player.username === newPlayer.getUsername)
+            if (player.username === newPlayer.username)
                 // A player with this username already exists.
                 return false;
         }
         this.arrayOfPlayers.push(newPlayer);
+        return true;
     }
 
     deletePlayer(toDeletePlayer) {
@@ -56,15 +41,9 @@ class Players {
     }
 
     displayPlayers() {
-        console.log(typeof this.arrayOfPlayers);
-        console.log(this.arrayOfPlayers);
         for (const player of this.arrayOfPlayers) {
             console.log(player);
         }
-    }
-
-    saveChanges() {
-        fs.writeFileSync('players.json', JSON.stringify(this.arrayOfPlayers));
     }
 
     initializeListForTesting() {
@@ -83,6 +62,12 @@ class Players {
     }
 
 }
+
+/*
+const players = new Players();
+players.initializeListForTesting();
+players.displayPlayers();
+
 
 const players = new Players();
 players.initializeListForTesting();
@@ -106,4 +91,4 @@ players.deletePlayer(user);
 players.displayPlayers();
 players.saveChanges();
 console.log("Check the JSON file now, it should be updated.");
-
+*/
