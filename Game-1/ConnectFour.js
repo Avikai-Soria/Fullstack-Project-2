@@ -18,7 +18,7 @@ startButton.addEventListener("click", setGame);
 
 function setGame() {
     // Get the selected difficulty level
-    const difficultyRadioButtons = document.getElementsByName("difficulty");
+    const difficultyRadioButtons = document.getElementsByName("difficulty"); // This one might not be relevant
     let difficulty;
     for (let i = 0; i < difficultyRadioButtons.length; i++) {
         if (difficultyRadioButtons[i].checked) {
@@ -29,6 +29,15 @@ function setGame() {
 
     // Get the selected color
     const colorRadioButtons = document.getElementsByName("color");
+    if (colorRadioButtons[0].checked) {
+        playerHuman =playerRed;
+        playerAI = playerYellow;
+    } // This mean the player choose red
+    else {
+        playerHuman = playerYellow;
+        playerAI = playerRed;
+    }
+
     let color;
     for (let i = 0; i < colorRadioButtons.length; i++) {
         if (colorRadioButtons[i].checked) {

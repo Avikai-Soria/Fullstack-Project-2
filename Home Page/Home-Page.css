@@ -66,3 +66,8 @@ h2{
 #games-grid a:hover{
     text-decoration: underline;
 }
+
+#Top-Nav-Bar {
+    width: 100%;
+    height: auto;
+}
