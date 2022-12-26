@@ -1,0 +1,43 @@
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./ConnectFour.css">
+    <title>ארבע בשורה</title>
+  </head>
+  <body>
+    <h1>ארבע בשורה</h1>
+
+    <button id="start-game-button">Start Game</button>
+
+    <!-- Radio box for selecting difficulty level -->
+    <form>
+      <label for="difficulty-easy">Easy</label>
+      <input type="radio" id="difficulty-easy" name="difficulty" value="easy"
+        checked>
+      <br>
+      <label for="difficulty-medium">Medium</label>
+      <input type="radio" id="difficulty-medium" name="difficulty"
+        value="medium">
+      <br>
+      <label for="difficulty-hard">Hard</label>
+      <input type="radio" id="difficulty-hard" name="difficulty" value="hard">
+    </form>
+
+    <!-- Radio box for selecting color -->
+    <form>
+      <label for="color-red">Red</label>
+      <input type="radio" id="color-red" name="color" value="red" checked>
+      <br>
+      <label for="color-yellow">Yellow</label>
+      <input type="radio" id="color-yellow" name="color" value="yellow">
+    </form>
+
+
+    <h2 id="winner"></h2>
+
+    <div id="board"></div>
+  </body>
+  <script src="./ConnectFour.js"></script>
+</html>

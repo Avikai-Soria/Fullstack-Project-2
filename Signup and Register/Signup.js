@@ -79,7 +79,7 @@ function confirmSignup() {
         localStorage.setItem("Players", JSON.stringify(players))
         window.alert("נרשמת בהצלחה!");
         sessionStorage.setItem("Username", signupUsernameEl.value);
-        document.location.href = "./Home Page/Home-Page.html";
+        document.location.href = "../Home Page/Home-Page.html";
     }
     else {
         signupUsernameEl.style.border = "2px solid red";

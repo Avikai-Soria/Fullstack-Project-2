@@ -46,7 +46,7 @@ function confirmLogin() {
             if (player.password === password) {
                 window.alert("התחברת בהצלחה!");
                 sessionStorage.setItem("Username", username);
-                document.location.href = "./Home Page/Home-Page.html";
+                document.location.href = "../Home Page/Home-Page.html";
                 return true;
             }
             else {
