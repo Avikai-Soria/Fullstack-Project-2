@@ -161,22 +161,13 @@ function move() {
     if (newHead.some(function (element) { return element >= GAMESIZE || element < 0 })) {
         // YOU LOSE!
         gameOver();
-        // reset()
         return
     }
     if (gameGrid[(newHead[1]*GAMESIZE)+newHead[0]].className === 'snake') {
         // YOU LOSE!
-        clearInterval(playInteraval);
-        // reset()
-        return
-    }
-    /* Removing this check because the game will be over 
-    if (leftToWin === 0) {
-        // YOU WIN!
         gameOver();
         return
     }
-    */
 
     if (gameGrid[(newHead[1]*GAMESIZE)+newHead[0]].className === 'apple') {
         addToSnake(newHead)
@@ -206,7 +197,6 @@ function getDifficulty() {
     }
 
 }
-
 
 function stop() {
     if (playInteraval)
