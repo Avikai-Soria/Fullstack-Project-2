@@ -12,15 +12,16 @@ var gameGrid = []
 var playInteraval;
 var snake = []
 var state = "Left"
+var nextState = "Left"
 
 // constract the area
 for (let i = 0; i < GAMESIZE; i++) {
     let column = document.createElement('tr')
     for (let j = 0; j < GAMESIZE; j++) {
         let area = document.createElement('td')
+        gameGrid.push(area)
         column.appendChild(area)
     }
-    gameGrid.push(column.children)
     gameZone.appendChild(column);
 }
 
@@ -37,13 +38,13 @@ function updateLeftToWin(value = GAMESIZE * GAMESIZE - snakeSize) {
 
 function addToSnake(point) {
     let x = point[0], y = point[1];
-    gameGrid[y][x].className = 'snake'
+    gameGrid[(y*GAMESIZE)+x].className = 'snake'
     snake.push([x, y])
 }
 
 function removefromSnake() {
     point = snake.shift()
-    gameGrid[point[1]][point[0]].className = 'area'
+    gameGrid[(point[1]*GAMESIZE)+point[0]].className = 'area'
 }
 
 function getRandomInt(max) {
@@ -51,7 +52,8 @@ function getRandomInt(max) {
 }
 
 function addApple() {
-    gameGrid[getRandomInt(GAMESIZE)][getRandomInt(GAMESIZE)].className = 'apple'
+    potentialApplePlaces = gameGrid.filter(function (element) {return element.className === 'area'})
+    potentialApplePlaces[getRandomInt(potentialApplePlaces.length-1)].className = 'apple'
 }
 
 function applyState(point) {
@@ -81,38 +83,49 @@ function changeState(e) {
     if (!playInteraval) {
         start()
     }
-    if (e.keyCode === 37 || e.keyCode === 65) // Going left
-        if (state !== 'Right') {
-            state = 'Left';
-            return;
-        }
+    if (e.keyCode === 37 || e.keyCode === 65){ // Going left
+        nextState = 'Left';
+        return
+    } 
+        
 
+    if (e.keyCode === 38 || e.keyCode === 87){ // Going up
+        nextState = 'Up';
+        return
+    } 
+        
 
-    if (e.keyCode === 38 || e.keyCode === 87) // Going up
-        if (state !== 'Down') {
-            state = 'Up';
-            return;
-        }
+    if (e.keyCode === 39 || e.keyCode === 68){ // Going right
+        nextState = 'Right';
+        return
+    } 
+        
 
-    if (e.keyCode === 39 || e.keyCode === 68) // Going right
-        if (state !== 'Left') {
-            state = 'Right';
-            return;
-        }
-
-    if (e.keyCode === 40 || e.keyCode === 83) // Going down
-        if (state !== 'Up') 
-            state = "Down";
+    if (e.keyCode === 40 || e.keyCode === 83){
+        nextState = "Down";// Going down
+    } 
+       
 }
+
+function updateState(){
+    if ((state === 'Left' && nextState !== 'Right')||
+        (state === 'Right' && nextState !== 'Left')||
+        (state === 'Up' && nextState !== 'Down')||
+        (state === 'Down' && nextState !== 'Up')
+    ) // Update the state
+    {
+        state = nextState
+    }
+}
+
 
 function reset() {
 
     stop()
 
-    for (let tr of gameGrid) {
-        for (let td of tr) {
-            td.className = 'area'
-        }
+    
+    for (let td of gameGrid){
+        td.className = 'area'
     }
 
     // constract the snake
@@ -123,13 +136,14 @@ function reset() {
     }
 
     // constract the apple
-    gameGrid[getRandomInt(7, startSnakeY)][getRandomInt(7, startSnakeX)].className = 'apple'
+    addApple()
 }
 
 
 // game functions
 
 function move() {
+    updateState()
     let head = snake[snake.length - 1]
     let newHead = applyState(head)
 
@@ -138,7 +152,7 @@ function move() {
         reset()
         return
     }
-    if (gameGrid[newHead[1]][newHead[0]].className === 'snake') {
+    if (gameGrid[(newHead[1]*GAMESIZE)+newHead[0]].className === 'snake') {
         // YOU LOSE!
         reset()
         return
@@ -148,7 +162,7 @@ function move() {
         reset()
         return
     }
-    if (gameGrid[newHead[1]][newHead[0]].className === 'apple') {
+    if (gameGrid[(newHead[1]*GAMESIZE)+newHead[0]].className === 'apple') {
         addToSnake(newHead)
         addApple()
         updateLeftToWin(leftToWin - 1)
