@@ -135,10 +135,8 @@ function reset() {
     score = -1;
     updateScore();
 
-    for (let tr of gameGrid) {
-        for (let td of tr) {
-            td.className = 'area'
-        }
+    for (let td of gameGrid){
+        td.className = 'area'
     }
 
     // constract the snake
