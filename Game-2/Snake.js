@@ -7,7 +7,7 @@ const DIFFLEVEL = [EASYDIFF, NORMALDIFF, HARDDIFF]
 let currentDiff = NORMALDIFF;
 const snakeSize = 5
 const gameZone = document.getElementById('game-zone')
-var leftToWin = 0
+var score = -1;
 var gameGrid = []
 var playInteraval;
 var snake = []
@@ -24,15 +24,20 @@ for (let i = 0; i < GAMESIZE; i++) {
     gameZone.appendChild(column);
 }
 
-updateLeftToWin()
 reset()
 addEventListener('keydown', changeState);
 
 // help functions
 
-function updateLeftToWin(value = GAMESIZE * GAMESIZE - snakeSize) {
-    document.getElementById('left-to-win').innerHTML = value
-    leftToWin = value
+function updateScore() {
+    const maxApples = GAMESIZE * GAMESIZE - snakeSize;
+    score += 1;
+    const leftApples = maxApples - score;
+
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    scoreDisplay.innerText = "נותרו עוד " + leftApples + " תפוחים";
+    scoreDisplay.innerText += '\n';
+    scoreDisplay.innerText += "הרווחת עד כה " + score * 100 + " נקודות!";
 }
 
 function addToSnake(point) {
@@ -81,6 +86,9 @@ function changeState(e) {
     if (!playInteraval) {
         start()
     }
+    if (e.keyCode === 82) {
+        reset();
+    }
     if (e.keyCode === 37 || e.keyCode === 65) // Going left
         if (state !== 'Right') {
             state = 'Left';
@@ -101,13 +109,16 @@ function changeState(e) {
         }
 
     if (e.keyCode === 40 || e.keyCode === 83) // Going down
-        if (state !== 'Up') 
+        if (state !== 'Up')
             state = "Down";
 }
 
 function reset() {
 
     stop()
+
+    score = -1;
+    updateScore();
 
     for (let tr of gameGrid) {
         for (let td of tr) {
@@ -135,23 +146,27 @@ function move() {
 
     if (newHead.some(function (element) { return element >= GAMESIZE || element < 0 })) {
         // YOU LOSE!
-        reset()
+        gameOver();
+        // reset()
         return
     }
     if (gameGrid[newHead[1]][newHead[0]].className === 'snake') {
         // YOU LOSE!
-        reset()
+        clearInterval(playInteraval);
+        // reset()
         return
     }
+    /* Removing this check because the game will be over 
     if (leftToWin === 0) {
         // YOU WIN!
-        reset()
+        gameOver();
         return
     }
+    */
     if (gameGrid[newHead[1]][newHead[0]].className === 'apple') {
         addToSnake(newHead)
         addApple()
-        updateLeftToWin(leftToWin - 1)
+        updateScore()
         return; // No need to remove the tail
     }
 
@@ -168,7 +183,7 @@ function start() {
 
 function getDifficulty() {
     // Get the selected difficulty level
-    const difficultyRadioButtons = document.getElementsByName("difficulty"); // This one might not be relevant
+    const difficultyRadioButtons = document.getElementsByName("difficulty");
     for (let i = 0; i < difficultyRadioButtons.length; i++) {
         if (difficultyRadioButtons[i].checked) {
             return DIFFLEVEL[i];
@@ -184,5 +199,12 @@ function stop() {
     playInteraval = undefined
     snake = []
     state = "Left"
-    updateLeftToWin()
+}
+
+function gameOver() {
+    clearInterval(playInteraval);
+    const scoreDisplay = document.getElementById("scoreDisplay");
+    scoreDisplay.innerText = "המשחק נגמר! הרווחת " + score * 100 + " נקודות!";
+    scoreDisplay.innerText += "\n";
+    scoreDisplay.innerText += "לחידוש המשחק לחץ על המקש R."
 }

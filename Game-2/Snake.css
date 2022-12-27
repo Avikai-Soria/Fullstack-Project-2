@@ -1,5 +1,10 @@
 @import url('./../BaseCss.css');
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
 td{
     height: 20px;
     width: 20px;
