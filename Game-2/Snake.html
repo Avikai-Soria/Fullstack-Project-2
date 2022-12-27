@@ -1,4 +1,5 @@
 <html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,6 +7,7 @@
     <link rel="stylesheet" href="./Snake.css">
     <title>Document</title>
 </head>
+
 <body>
 
     <div class="row-div">
@@ -13,14 +15,27 @@
         <button onclick="start()">start!</button>
         <h1 id="left-to-win"></h1>
     </div>
-   
-    
+
+    <!-- Radio box for selecting difficulty level -->
+    <form>
+        <label for="difficulty-easy">Easy</label>
+        <input type="radio" id="difficulty-easy" name="difficulty" value="easy">
+        <br>
+        <label for="difficulty-medium">Medium</label>
+        <input type="radio" id="difficulty-medium" name="difficulty" value="medium" checked>
+        <br>
+        <label for="difficulty-hard">Hard</label>
+        <input type="radio" id="difficulty-hard" name="difficulty" value="hard">
+    </form>
+
+
     <div class="center-div">
         <table id="game-zone">
-        
+
         </table>
     </div>
-    
+
 </body>
 <script src="./Snake.js"></script>
+
 </html>

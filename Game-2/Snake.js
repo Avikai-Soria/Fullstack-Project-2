@@ -1,17 +1,22 @@
 // variables
 const GAMESIZE = 30
+const EASYDIFF = 150;
+const NORMALDIFF = 100;
+const HARDDIFF = 50;
+const DIFFLEVEL = [EASYDIFF, NORMALDIFF, HARDDIFF]
+let currentDiff = NORMALDIFF;
 const snakeSize = 5
-var leftToWin = 0
 const gameZone = document.getElementById('game-zone')
+var leftToWin = 0
 var gameGrid = []
 var playInteraval;
 var snake = []
-var state = "KeyA"
+var state = "Left"
 
 // constract the area
-for (let i =0;i<GAMESIZE;i++){
+for (let i = 0; i < GAMESIZE; i++) {
     let column = document.createElement('tr')
-    for (let j =0;j<GAMESIZE;j++){
+    for (let j = 0; j < GAMESIZE; j++) {
         let area = document.createElement('td')
         column.appendChild(area)
     }
@@ -21,122 +26,133 @@ for (let i =0;i<GAMESIZE;i++){
 
 updateLeftToWin()
 reset()
-addEventListener('keypress', changeState)
+addEventListener('keydown', changeState);
 
 // help functions
 
-function updateLeftToWin(value = GAMESIZE * GAMESIZE - snakeSize){
+function updateLeftToWin(value = GAMESIZE * GAMESIZE - snakeSize) {
     document.getElementById('left-to-win').innerHTML = value
     leftToWin = value
 }
 
-function addToSnake(point){
-    let x = point[0] ,y = point[1];
+function addToSnake(point) {
+    let x = point[0], y = point[1];
     gameGrid[y][x].className = 'snake'
-    snake.push([x,y])
+    snake.push([x, y])
 }
 
-function removefromSnake(){
+function removefromSnake() {
     point = snake.shift()
     gameGrid[point[1]][point[0]].className = 'area'
 }
 
-function getRandomInt(max){
+function getRandomInt(max) {
     return Math.floor(Math.random() * max)
 }
 
-function addApple(){
+function addApple() {
     gameGrid[getRandomInt(GAMESIZE)][getRandomInt(GAMESIZE)].className = 'apple'
 }
 
-function applyState(point){
-    return_point = [point[0],point[1]]
+function applyState(point) {
+    return_point = [point[0], point[1]]
 
-    switch(state){
-        case 'KeyD':
-            return_point[0] -= 1
-            break;
-        case 'KeyA':
+    switch (state) {
+        case 'Right':
             return_point[0] += 1
             break;
-        case 'KeyW':
+        case 'Left':
+            return_point[0] -= 1
+            break;
+        case 'Up':
             return_point[1] -= 1
             break;
-        case 'KeyS':
+        case 'Down':
             return_point[1] += 1
             break;
     }
-    
+
     return return_point
 }
 
 // prepare game functions
 
-
-function get_level(){
-    return 100
-}
-
-function changeState(e){
-    if (!playInteraval){
+function changeState(e) {
+    if (!playInteraval) {
         start()
     }
-    if (e.code === 'KeyW' || e.code === 'KeyS' || e.code === 'KeyA' || e.code === 'KeyD'){
-        if ((state === 'KeyA' && e.code !== 'KeyD') ||
-            (state === 'KeyD' && e.code !== 'KeyA') ||
-            (state === 'KeyW' && e.code !== 'KeyS') ||
-            (state === 'KeyS' && e.code !== 'KeyW') 
-        ) {state = e.code}
-    }
+    if (e.keyCode === 37 || e.keyCode === 65) // Going left
+        if (state !== 'Right') {
+            state = 'Left';
+            return;
+        }
+
+
+    if (e.keyCode === 38 || e.keyCode === 87) // Going up
+        if (state !== 'Down') {
+            state = 'Up';
+            return;
+        }
+
+    if (e.keyCode === 39 || e.keyCode === 68) // Going right
+        if (state !== 'Left') {
+            state = 'Right';
+            return;
+        }
+
+    if (e.keyCode === 40 || e.keyCode === 83) // Going down
+        if (state !== 'Up') 
+            state = "Down";
 }
 
-function reset(){
-    
+function reset() {
+
     stop()
 
-    for (let tr of gameGrid){
-        for (let td of tr){
+    for (let tr of gameGrid) {
+        for (let td of tr) {
             td.className = 'area'
-        } 
+        }
     }
 
     // constract the snake
     const startSnakeY = 25
-    const startSnakeX = 5
-    for (let i=0;i<snakeSize;i++){
-        addToSnake([startSnakeX+i,startSnakeY])
+    const startSnakeX = 25
+    for (let i = 0; i < snakeSize; i++) {
+        addToSnake([startSnakeX - i, startSnakeY])
     }
 
     // constract the apple
-    gameGrid[getRandomInt(7,startSnakeY)][getRandomInt(7,startSnakeX)].className = 'apple'
+    gameGrid[getRandomInt(7, startSnakeY)][getRandomInt(7, startSnakeX)].className = 'apple'
 }
 
 
 // game functions
 
-function move(){
+function move() {
     let head = snake[snake.length - 1]
     let newHead = applyState(head)
 
-    if (newHead.some(function (element) {return element >= GAMESIZE || element < 0})){
+    if (newHead.some(function (element) { return element >= GAMESIZE || element < 0 })) {
         // YOU LOSE!
         reset()
         return
     }
-    if (gameGrid[newHead[1]][newHead[0]].className === 'snake'){
+    if (gameGrid[newHead[1]][newHead[0]].className === 'snake') {
         // YOU LOSE!
         reset()
         return
     }
-    if (leftToWin === 0){
+    if (leftToWin === 0) {
         // YOU WIN!
         reset()
         return
     }
-    if (gameGrid[newHead[1]][newHead[0]].className === 'apple'){
+    if (gameGrid[newHead[1]][newHead[0]].className === 'apple') {
         addToSnake(newHead)
         addApple()
-        updateLeftToWin(leftToWin-1)
+        updateLeftToWin(leftToWin - 1)
+        return; // No need to remove the tail
     }
 
     addToSnake(newHead)
@@ -144,17 +160,29 @@ function move(){
 
 }
 
-function start(){
+function start() {
+    currentDiff = getDifficulty();
     if (!playInteraval)
-        playInteraval = setInterval(move, get_level())
+        playInteraval = setInterval(move, currentDiff)
+}
+
+function getDifficulty() {
+    // Get the selected difficulty level
+    const difficultyRadioButtons = document.getElementsByName("difficulty"); // This one might not be relevant
+    for (let i = 0; i < difficultyRadioButtons.length; i++) {
+        if (difficultyRadioButtons[i].checked) {
+            return DIFFLEVEL[i];
+        }
+    }
+
 }
 
 
-function stop(){
+function stop() {
     if (playInteraval)
         clearInterval(playInteraval)
-        playInteraval = undefined
-        snake = []
-        state = "KeyA"
-        updateLeftToWin()
+    playInteraval = undefined
+    snake = []
+    state = "Left"
+    updateLeftToWin()
 }
