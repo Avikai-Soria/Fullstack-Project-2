@@ -1,22 +1,22 @@
 @import url('./../BaseCss.css');
 
-h1{
+h1 {
     font-size: 40px;
     text-align: center;
 }
 
-h2{
+h2 {
     font-size: 25px;
     padding: 0 0.5rem;
 }
 
 /* ----- Top Games ------ */
 
-.top-games{
+.top-games {
     margin-top: 2rem;
 }
 
-.top-games img{
+.top-games img {
     width: 15rem;
     height: 15rem;
     border-radius: 2rem;
@@ -24,18 +24,18 @@ h2{
 }
 
 /* ----- Last Played ------ */
-#last-played { 
+#last-played {
     margin-bottom: 1rem;
-    overflow: scroll; 
-    width: 100%; 
+    overflow: scroll;
+    width: 100%;
     overflow-y: hidden;
 }
 
-#last-played-innerwrapper { 
+#last-played-innerwrapper {
     width: 1520px;
 }
 
-#last-played img{
+#last-played img {
     height: 12rem;
     width: 12rem;
     border-radius: 2rem;
@@ -50,24 +50,20 @@ h2{
     max-width: 70rem;
 }
 
-#games-grid img{
+#games-grid img {
     width: 7rem;
     height: 7rem;
     padding: 0.3rem;
     border-radius: 2rem;
 }
 
-#games-grid a{
+#games-grid a {
     text-align: center;
     text-decoration: none;
     color: black;
     font-weight: 600;
 }
-#games-grid a:hover{
-    text-decoration: underline;
-}
 
-#Top-Nav-Bar {
-    width: 100%;
-    height: auto;
+#games-grid a:hover {
+    text-decoration: underline;
 }

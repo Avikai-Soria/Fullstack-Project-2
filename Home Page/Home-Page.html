@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="./Home-Page.css">
-    <script src="jquery.js"></script> 
-    <script> 
-    $(function(){
-      $("#Top-Nav-Bar").load("../TopNavBar.html"); 
-    });
-    </script> 
+    <link rel="stylesheet" href="../css/BaseCss.css">
 </head>
+
 <body>
     <header>
-        <div id="Top-Nav-Bar"></div>
+        <div id="top-bar">
+            <div id="login-menu">
+                <a href="../Signup and Register/SignupRegister.html">
+                    <button>לכניסה או להרשמה לחץ כאן!</button>
+                </a>
+            </div>
+            <div id="user-menu">
+                <img src="../Images/no-profile-picture-icon.png" alt="תמונת פרופיל" id="profile-picture"
+                    onclick="userMenuDisplay()">
+                <span id="username"></span>
+                <div id="user-menu-options">
+                    <p id="scoreDisplay"></p>
+                    <p id="timeDisplay"></p>
+                    <a href="#">צפה בפרופיל שלי</a>
+                    <a href="#">התנתקות</a>
+                </div>
+            </div>
+            <a href="../Home Page/Home-Page.html">
+                <img src="../Images/Logo.png" alt="לוגו האתר" id="logo">
+            </a>
+        </div>
     </header>
 
     <!-- top games -->
@@ -42,13 +59,13 @@
             </div>
         </div>
     </section>
-    
+
 
     <!-- grid of all images. the name of the game is the img name -->
     <section>
         <h1>תראה את אלה!</h1>
         <div class="center-div">
-            <div id='games-grid' class="center-div">   
+            <div id='games-grid' class="center-div">
             </div>
         </div>
     </section>
@@ -100,7 +117,9 @@
             </div>
         </div>
     </footer>
-    
+
 </body>
 <script src="./Home-Page.js"></script>
+<script src="../TopNavBar.js"></script>
+
 </html>

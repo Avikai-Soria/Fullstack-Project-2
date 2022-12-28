@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="TopNavBar.css">
 
-    <style>
-</style>
-  </head>
-  <body>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="TopNavBar.css">
 
-    <div class="topnav" id="myTopnav">
-      <a href="./Home Page/Home-Page.html" class="active">דף הבית</a>
-      <a href="./Signup and Register/SignupRegister.html">הרשמה/כניסה</a>
-      <a href="./Game-1/ConnectFour.html">משחק שמור 1</a>
-      <a href="./Game-2/Snake.html">משחק שמור 2</a>
-      <a href="javascript:void(0);" class="icon"
-        onclick="changeTopNavBarIcon()">
-        <i class="fa fa-bars"></i>
-      </a>
-      <section id="logo">
-        <a href="index.html" id="logo_link">
-          <img src="./Images/Logo.png" alt="דף הבית" />
-        </a>
-      </section>
+  <style>
+  </style>
+</head>
+
+<body>
+  <div id="top-bar">
+    <div id="user-menu">
+      <img src="./Images/no-profile-picture-icon.png" alt="תמונת פרופיל" id="profile-picture"
+        onclick="userMenuDisplay()">
+      <span id="username"></span>
+      <div id="user-menu-options">
+        <p id = "scoreDisplay"></p>
+        <p id = "timeDisplay"></p>
+        <a href="#">צפה בפרופיל שלי</a>
+        <a href="#">התנתקות</a>
+      </div>
     </div>
+    <a href="./Home Page/Home-Page.html">
+      <img src="./Images/Logo.png" alt="לוגו האתר" id="logo">
+    </a>
+  </div>
+</body>
+<script src="./TopNavBar.js"></script>
 
-    <script src="./TopNavBar.js"></script>
-
-  </body>
 </html>

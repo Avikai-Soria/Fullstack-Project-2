@@ -1,3 +1,15 @@
+class Player {
+    constructor(username, password, email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.winCount = 0;
+        this.timePlayed = 0;
+        this.totalScore = 0;
+        this.profilePicture = "";
+    }
+}
+
 // Getting relevant elements for login
 const loginUsernameEl = document.getElementById('log-username');
 const loginPasswordEl = document.getElementById('log-password');
@@ -46,6 +58,9 @@ function confirmLogin() {
             if (player.password === password) {
                 window.alert("התחברת בהצלחה!");
                 sessionStorage.setItem("Username", username);
+                sessionStorage.setItem("Score", player.totalScore);
+                sessionStorage.setItem("TimePlayed", player.timePlayed);
+                sessionStorage.setItem("ProfilePicture", player.profilepicture);
                 document.location.href = "../Home Page/Home-Page.html";
                 return true;
             }

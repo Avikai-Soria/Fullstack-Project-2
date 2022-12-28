@@ -4,10 +4,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./ConnectFour.css">
+    <link rel="stylesheet" href="../css/BaseCss.css">
     <title>ארבע בשורה</title>
   </head>
   <body>
-    <h1>ארבע בשורה</h1>
+    <header>
+      <div id="top-bar">
+        <div id="user-menu">
+          <img src="./Images/no-profile-picture-icon.png" alt="תמונת פרופיל" id="profile-picture"
+            onclick="userMenuDisplay()">
+          <span id="username"></span>
+          <div id="user-menu-options">
+            <p id = "scoreDisplay"></p>
+            <p id = "timeDisplay"></p>
+            <a href="#">צפה בפרופיל שלי</a>
+            <a href="#">התנתקות</a>
+          </div>
+        </div>
+        <a href="./Home Page/Home-Page.html">
+          <img src="./Images/Logo.png" alt="לוגו האתר" id="logo">
+        </a>
+      </div>
+      <h1>ארבע בשורה</h1>
+    </header>
 
     <button id="start-game-button">Start Game</button>
 
@@ -40,4 +59,6 @@
     <div id="board"></div>
   </body>
   <script src="./ConnectFour.js"></script>
+  <script src="../TopNavBar.js"></script>
+
 </html>

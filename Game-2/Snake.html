@@ -5,24 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Snake.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/BaseCss.css">
+    <title>סנייק</title>
 </head>
 
 <body>
     <header>
+        <div id="top-bar">
+            <div id="user-menu">
+              <img src="./Images/no-profile-picture-icon.png" alt="תמונת פרופיל" id="profile-picture"
+                onclick="userMenuDisplay()">
+              <span id="username"></span>
+              <div id="user-menu-options">
+                <p id = "scoreDisplay"></p>
+                <p id = "timeDisplay"></p>
+                <a href="#">צפה בפרופיל שלי</a>
+                <a href="#">התנתקות</a>
+              </div>
+            </div>
+            <a href="./Home Page/Home-Page.html">
+              <img src="./Images/Logo.png" alt="לוגו האתר" id="logo">
+            </a>
+          </div>
         <h1>סנייק</h1>
     </header>
     <h2 id="scoreDisplay"></h2>
 
     <!-- Radio box for selecting difficulty level -->
-    <form>
-        <label for="difficulty-easy">Easy</label>
+    <form id="diffSelect">
+        <label for="difficulty-easy">קל</label>
         <input type="radio" id="difficulty-easy" name="difficulty" value="easy">
         <br>
-        <label for="difficulty-medium">Medium</label>
+        <label for="difficulty-medium">בינוני</label>
         <input type="radio" id="difficulty-medium" name="difficulty" value="medium" checked>
         <br>
-        <label for="difficulty-hard">Hard</label>
+        <label for="difficulty-hard">קשה</label>
         <input type="radio" id="difficulty-hard" name="difficulty" value="hard">
     </form>
 
@@ -35,5 +52,7 @@
 
 </body>
 <script src="./Snake.js"></script>
+<script src="../TopNavBar.js"></script>
+
 
 </html>
