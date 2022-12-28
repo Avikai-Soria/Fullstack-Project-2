@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+            initial-scale=1.0">
+    <title>הרשמה והתחברות</title>
+    <link rel="stylesheet" href="./Styles/SignupRegister.css">
+    <link rel="stylesheet" href="./Styles/BaseCss.css">
+</head>
+
+<body>
+    <header>
+        <div id="top-bar">
+            <div id="login-menu">
+                <a href="./SignupRegister.html">
+                    <button>לכניסה או להרשמה לחץ כאן!</button>
+                </a>
+            </div>
+            <div id="user-menu">
+                <img src="./Images/no-profile-picture-icon.png" alt="תמונת פרופיל" id="profile-picture"
+                    onclick="userMenuDisplay()">
+                <span id="username"></span>
+                <div id="user-menu-options">
+                    <p id="scoreDisplay"></p>
+                    <p id="timeDisplay"></p>
+                    <a href="#">צפה בפרופיל שלי</a>
+                    <a href="#">התנתקות</a>
+                </div>
+            </div>
+            <a href="./Index.html">
+                <img src="./Images/Logo.png" alt="לוגו האתר" id="logo">
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- container div -->
+        <div class="container">
+
+            <!-- upper button section to select
+			the login or signup form -->
+            <div class="slider"></div>
+            <div class="btn">
+                <button class="login">התחברות</button>
+                <button class="signup">הרשמה</button>
+            </div>
+
+            <!-- Form section that contains the
+			login and the signup form -->
+            <div class="form-section">
+
+                <!-- login form -->
+                <div class="login-box">
+                    <input type="text" class="name ele" id="log-username" name="log-username"
+                        placeholder="הכנס שם משתמש כאן">
+                    <small id="log-username-error"></small>
+                    <input type="password" class="password ele" id="log-password" name="log-password"
+                        placeholder="הכנס סיסמה כאן">
+                    <small id="log-password-error"></small>
+                    <button id="login-button" class="clkbtn">התחברות</button>
+                </div>
+
+                <!-- signup form -->
+                <div class="signup-box">
+                    <input type="text" class="name ele" id="signup-username" name="signup-username"
+                        placeholder="שם משתמש">
+                    <small id="signup-username-error"></small>
+                    <input type="email" class="email ele" id="signup-email" id="signup-email"
+                        placeholder="כתובת אימייל">
+                    <small id="signup-email-error"></small>
+                    <input type="password" class="password ele" id="signup-password" name="signup-password"
+                        placeholder="סיסמה">
+                    <small id="signup-password-error"></small>
+                    <input type="password" class="password ele" id="signup-confirm-password"
+                        name="signup-confirm-password" placeholder="אמת סיסמה">
+                    <small id="signup-confirm-password-error"></small>
+
+                    <button id="signup-button" class="clkbtn">הרשמה</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer center-div">
+                <div class="footer-heading footer-1">
+                    <h2>About Us</h2>
+                    <a href="#">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Policies</a>
+                    <a href="#">Invisesitors</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <div class="footer-heading footer-2">
+                    <h2>Contact Us</h2>
+                    <a href="#">Sells</a>
+                    <a href="#">Feedback</a>
+                    <a href="#">Affiliate</a>
+                    <a href="#">Customers Service</a>
+                </div>
+                <div class="footer-heading footer-3">
+                    <h2>Social Media</h2>
+                    <div class="row-div social-media">
+                        <img src="./Images/facebook icon.png">
+                        <a href="#">Facebook</a>
+                    </div>
+                    <div class="row-div social-media">
+                        <img src="./Images/instangram icon.png">
+                        <a href="https://www.instagram.com/explore/tags/gallery/">Instagram</a>
+                    </div>
+                    <div class="row-div social-media">
+                        <img src="./Images/pintrest icon.png">
+                        <a href="#">Pinterest</a>
+                    </div>
+                </div>
+
+                <form class="footer-email-form" action="./GalleyPage.html" method="post">
+                    <h2>Join Our Newslater</h2>
+                    <div class="row-div">
+                        <input name="footer-email" type="email" placeholder="Enter Your Email Here!" id="footer-email">
+
+                        <div id="footer-email-bth">
+                            <div>Sign Up</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="./Scripts/Slider.js"></script>
+<script src="./Scripts/Login.js"></script>
+<script src="./Scripts/Signup.js"></script>
+<script src="./Scripts/TopNavBar.js"></script>
+
+</html>

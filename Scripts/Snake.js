@@ -7,7 +7,7 @@ const DIFFLEVEL = [EASYDIFF, NORMALDIFF, HARDDIFF]
 let currentDiff = NORMALDIFF;
 const snakeSize = 5
 const gameZone = document.getElementById('game-zone')
-var score = -1;
+var currentScore = -1;
 var gameGrid = []
 var playInteraval;
 var snake = []
@@ -32,13 +32,13 @@ addEventListener('keydown', changeState);
 
 function updateScore() {
     const maxApples = GAMESIZE * GAMESIZE - snakeSize;
-    score += 1;
-    const leftApples = maxApples - score;
+    currentScore += 1;
+    const leftApples = maxApples - currentScore;
 
-    const scoreDisplay = document.getElementById('scoreDisplay');
-    scoreDisplay.innerText = "נותרו עוד " + leftApples + " תפוחים";
-    scoreDisplay.innerText += '\n';
-    scoreDisplay.innerText += "הרווחת עד כה " + score * 100 + " נקודות!";
+    const userMSG = document.getElementById('userMSG');
+    userMSG.innerText = "נותרו עוד " + leftApples + " תפוחים";
+    userMSG.innerText += '\n';
+    userMSG.innerText += "הרווחת עד כה " + currentScore * 100 + " נקודות!";
 }
 
 function addToSnake(point) {
@@ -132,7 +132,7 @@ function reset() {
 
     stop()
 
-    score = -1;
+    currentScore = -1;
     updateScore();
 
     for (let td of gameGrid){
@@ -209,7 +209,7 @@ function stop() {
 function gameOver() {
     clearInterval(playInteraval);
     const scoreDisplay = document.getElementById("scoreDisplay");
-    scoreDisplay.innerText = "המשחק נגמר! הרווחת " + score * 100 + " נקודות!";
+    scoreDisplay.innerText = "המשחק נגמר! הרווחת " + currentScore * 100 + " נקודות!";
     scoreDisplay.innerText += "\n";
     scoreDisplay.innerText += "לחידוש המשחק לחץ על המקש R."
 }

@@ -62,6 +62,7 @@ function confirmSignup() {
     }
     console.log(players);
 
+    // This line is very problematic, need to check it later
     const player = new Player(signupUsernameEl.value, signupPasswordEl.value, signupEmailEl.value);
     console.log(typeof players);
     if (addPlayer(players, player)) {

@@ -9,10 +9,6 @@ let gameOver;
 let currentBoard;
 let currentColumns; //keeps track of which row each column is at.
 
-/*window.onload = function () {
-    setGame();
-}*/
-
 const startButton = document.getElementById("start-game-button");
 startButton.addEventListener("click", setGame);
 
@@ -46,7 +42,7 @@ function setGame() {
         }
     }
 
-    let winner = document.getElementById("winner");
+    let winner = document.getElementById("userMSG");
     winner.innerText = "";
 
 
@@ -88,7 +84,7 @@ function setPieceFromElement() {
     }
     if (currentColumns === [0, 0, 0, 0, 0, 0, 0]) {
         gameOver = true;
-        let winner = document.getElementById("winner");
+        let winner = document.getElementById("userMSG");
         winner.innerText = "זה תיקו!";
     }
 }
@@ -111,7 +107,7 @@ function setPiece(col, player) {
 }
 
 function setWinner(player) {
-    let winner = document.getElementById("winner");
+    let winner = document.getElementById("userMSG");
     if (player === playerHuman) {
         winner.innerText = "ברכות! ניצחת!"
     }

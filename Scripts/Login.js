@@ -60,7 +60,7 @@ function confirmLogin() {
                 sessionStorage.setItem("Username", username);
                 sessionStorage.setItem("Score", player.totalScore);
                 sessionStorage.setItem("TimePlayed", player.timePlayed);
-                sessionStorage.setItem("ProfilePicture", player.profilepicture);
+                sessionStorage.setItem("ProfilePicture", player.profilePicture);
                 document.location.href = "../Home Page/Home-Page.html";
                 return true;
             }

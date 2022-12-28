@@ -1,0 +1,113 @@
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./Styles/Snake.css">
+  <link rel="stylesheet" href="./Styles/BaseCss.css">
+  <title>סנייק</title>
+</head>
+
+<body>
+  <header>
+    <div id="top-bar">
+      <div id="login-menu">
+        <a href="./SignupRegister.html">
+          <button>לכניסה או להרשמה לחץ כאן!</button>
+        </a>
+      </div>
+      <div id="user-menu">
+        <img src="./Images/no-profile-picture-icon.png" alt="תמונת פרופיל" id="profile-picture"
+          onclick="userMenuDisplay()">
+        <span id="username"></span>
+        <div id="user-menu-options">
+          <p id="scoreDisplay"></p>
+          <p id="timeDisplay"></p>
+          <a href="#">צפה בפרופיל שלי</a>
+          <a href="#">התנתקות</a>
+        </div>
+      </div>
+      <a href="./Index.html">
+        <img src="./Images/Logo.png" alt="לוגו האתר" id="logo">
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <h1>סנייק</h1>
+    <h2 id="userMSG"></h2>
+  
+    <!-- Radio box for selecting difficulty level -->
+    <form id="diffSelect">
+      <label for="difficulty-easy">קל</label>
+      <input type="radio" id="difficulty-easy" name="difficulty" value="easy">
+      <br>
+      <label for="difficulty-medium">בינוני</label>
+      <input type="radio" id="difficulty-medium" name="difficulty" value="medium" checked>
+      <br>
+      <label for="difficulty-hard">קשה</label>
+      <input type="radio" id="difficulty-hard" name="difficulty" value="hard">
+    </form>
+
+    <!-- Game table -->
+    <div class="center-div">
+      <table id="game-zone">
+
+      </table>
+    </div>
+  </main>
+
+</body>
+<script src="./Scripts/Snake.js"></script>
+<script src="./Scripts/TopNavBar.js"></script>
+
+<footer>
+  <div class="footer-container">
+      <div class="footer center-div">
+          <div class="footer-heading footer-1">
+              <h2>About Us</h2>
+              <a href="#">About</a>
+              <a href="#">Blog</a>
+              <a href="#">Policies</a>
+              <a href="#">Invisesitors</a>
+              <a href="#">Terms of Service</a>
+          </div>
+          <div class="footer-heading footer-2">
+              <h2>Contact Us</h2>
+              <a href="#">Sells</a>
+              <a href="#">Feedback</a>
+              <a href="#">Affiliate</a>
+              <a href="#">Customers Service</a>
+          </div>
+          <div class="footer-heading footer-3">
+              <h2>Social Media</h2>
+              <div class="row-div social-media">
+                  <img src="./Images/facebook icon.png">
+                  <a href="#">Facebook</a>
+              </div>
+              <div class="row-div social-media">
+                  <img src="./Images/instangram icon.png">
+                  <a href="https://www.instagram.com/explore/tags/gallery/">Instagram</a>
+              </div>
+              <div class="row-div social-media">
+                  <img src="./Images/pintrest icon.png">
+                  <a href="#">Pinterest</a>
+              </div>
+          </div>
+
+          <form class="footer-email-form" action="./GalleyPage.html" method="post">
+              <h2>Join Our Newslater</h2>
+              <div class="row-div">
+                  <input name="footer-email" type="email" placeholder="Enter Your Email Here!" id="footer-email">
+
+                  <div id="footer-email-bth">
+                      <div>Sign Up</div>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</footer>
+
+</html>

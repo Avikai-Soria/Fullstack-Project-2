@@ -3,6 +3,13 @@ body {
     text-align: center;
 }
 
+#diffSelect, #colorSelect {
+    display: flex;
+    justify-content: center;
+    row-gap: 10px;
+    column-gap: 4px;
+}
+
 #board {
     height: 540px;
     width: 630px;
