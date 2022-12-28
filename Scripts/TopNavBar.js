@@ -19,7 +19,12 @@ function loadUserInformation() {
     document.getElementById("username").innerHTML = username;
     document.getElementById("scoreDisplay").innerHTML ="צברת " + score + " נקודות";
     document.getElementById("timeDisplay").innerHTML = "שיחקת " + timePlayed + " דקות";
-    document.getElementById("profile-picture").src = profilePicture;
+    if (profilePicture === 'undefined') {
+        document.getElementById("profile-picture").src = "./Images/no-profile-picture-icon.png";
+    }
+    else {
+        document.getElementById("profile-picture").src = profilePicture;
+    }
     document.getElementById("user-menu").style.display = "flex";
 }
 
