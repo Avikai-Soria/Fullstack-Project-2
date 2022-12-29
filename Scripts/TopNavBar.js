@@ -1,25 +1,28 @@
+const players = JSON.parse(localStorage.getItem("Players"));
+
 let username;
 let profilePicture;
 let score;
 let timePlayed;
 
 window.onload = loadUserInformation;
-window.onbeforeunload = updateUserInformation;
 
 
 function loadUserInformation() {
     username = sessionStorage.getItem("Username");
-    profilePicture = sessionStorage.getItem("ProfilePicture");
-    score = sessionStorage.getItem("Score");
-    timePlayed = sessionStorage.getItem("TimePlayed");
     if (username === null) {
         document.getElementById("login-menu").style.display = "flex";
         return;
     }
+    const player = getPlayerByName(username);
+    profilePicture = player.profilePicture;
+    score = player.totalScore;
+    timePlayed = player.timePlayed;
+
     document.getElementById("username").innerHTML = username;
     document.getElementById("scoreDisplay").innerHTML ="צברת " + score + " נקודות";
-    document.getElementById("timeDisplay").innerHTML = "שיחקת " + timePlayed + " דקות";
-    if (profilePicture === 'undefined') {
+    document.getElementById("timeDisplay").innerHTML = "שיחקת " + (timePlayed/60).toFixed(2) + " דקות";
+    if (profilePicture === '') {
         document.getElementById("profile-picture").src = "./Images/no-profile-picture-icon.png";
     }
     else {
@@ -28,12 +31,26 @@ function loadUserInformation() {
     document.getElementById("user-menu").style.display = "flex";
 }
 
-function updateUserInformation() {
-    const players = localStorage.getItem("Players");
-    let currentPlayer;
-    for (plauer of players) {
+function updateUserInformation(moreScore, moreTime) {
+    if (username === null) {
+        return;
     }
-    return null;
+    const player = getPlayerByName(username);
+    player.totalScore += moreScore;
+    player.timePlayed += moreTime;
+    updatePlayers();
+    loadUserInformation();
+}
+
+function updatePlayers() {
+    localStorage.setItem("Players", JSON.stringify(players))
+}
+
+function getPlayerByName(username) {
+    if (players === null) {
+        return null;
+    }
+    return players.find(obj => { return obj.username === username })
 }
 
 function userMenuDisplay() {
@@ -44,4 +61,9 @@ function userMenuDisplay() {
     else {
         userMenuOptions.style.display = 'block';
     }
+}
+
+function userDisconnect() {
+    sessionStorage.removeItem("Username");
+    document.location.reload(true);
 }

@@ -3,12 +3,12 @@ class Player {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.winCount = 0;
         this.timePlayed = 0;
         this.totalScore = 0;
         this.profilePicture = "";
     }
 }
+
 
 // Getting relevant elements for login
 const loginUsernameEl = document.getElementById('log-username');
@@ -16,6 +16,17 @@ const loginPasswordEl = document.getElementById('log-password');
 const loginUsernameError = document.getElementById('log-username-error');
 const loginPasswordError = document.getElementById('log-password-error');
 
+loginUsernameEl.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        confirmLogin();
+    }
+});
+
+loginPasswordEl.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        confirmLogin();
+    }
+});
 
 const loginBtn = document.getElementById('login-button');
 loginBtn.onclick = function () { confirmLogin() };
@@ -34,7 +45,7 @@ function confirmLogin() {
 
     if (loginPasswordEl.value === "") {
         loginPasswordEl.style.border = "2px solid red";
-        loginPasswordError.textContent = "הסיסמה חייבת להיות באורך 8 תווים באנגלית לפחות, ולכלול לפחות אות קטנה אחת, אות גדולה אחת, מספר אחד ותו מיוחד אחד.";
+        loginPasswordError.textContent = "הסיסמה לא יכולה להיות ריקה";
         flag = false;
     }
     else {
@@ -45,7 +56,7 @@ function confirmLogin() {
 
     // If input is valid, we can check password
 
-    let players = JSON.parse(localStorage.getItem("Players"));
+    const players = JSON.parse(localStorage.getItem("Players"));
     if (players === null) {
         players = [];
     }
@@ -58,9 +69,6 @@ function confirmLogin() {
             if (player.password === password) {
                 window.alert("התחברת בהצלחה!");
                 sessionStorage.setItem("Username", username);
-                sessionStorage.setItem("Score", player.totalScore);
-                sessionStorage.setItem("TimePlayed", player.timePlayed);
-                sessionStorage.setItem("ProfilePicture", player.profilePicture);
                 document.location.href = "./index.html";
                 return true;
             }

@@ -50,6 +50,7 @@ function stopTimer(){
 function resetTimer(){
     secondsLabel.innerHTML = '00'
     minutesLabel.innerHTML= '00'
+    totalSeconds = 0;
 }
 
 
@@ -256,8 +257,9 @@ function stop() {
 function gameOver() {
     stopTimer()
     clearInterval(playInteraval)
-    const scoreDisplay = document.getElementById("scoreDisplay");
-    scoreDisplay.innerText = "המשחק נגמר! הרווחת " + currentScore * 100 + " נקודות!";
-    scoreDisplay.innerText += "\n";
-    scoreDisplay.innerText += "לחידוש המשחק לחץ על המקש R."
+    const userMSG = document.getElementById("userMSG");
+    userMSG.innerText = "המשחק נגמר! הרווחת " + currentScore * 100 + " נקודות!";
+    userMSG.innerText += "\n";
+    userMSG.innerText += "לחידוש המשחק לחץ על המקש R."
+    updateUserInformation(currentScore * 100, totalSeconds);
 }

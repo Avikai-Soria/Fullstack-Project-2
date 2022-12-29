@@ -8,6 +8,30 @@ const errorEmail = document.getElementById("signup-email-error");
 const errorPassword = document.getElementById("signup-password-error");
 const errorConfirmPassword = document.getElementById("signup-confirm-password-error");
 
+signupUsernameEl.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        confirmSignup();
+    }
+});
+
+signupEmailEl.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        confirmSignup();
+    }
+});
+
+signupPasswordEl.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        confirmSignup();
+    }
+});
+
+signupConfirPasswordEl.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        confirmSignup();
+    }
+});
+
 const signupBtn = document.getElementById('signup-button');
 
 signupBtn.onclick = function () { confirmSignup() };
