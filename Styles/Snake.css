@@ -10,6 +10,10 @@ td{
     margin: 0;
 }
 
+.timer{
+    font-size: 3rem;
+}
+
 #game-zone {
     direction: ltr;
 }
@@ -27,8 +31,18 @@ td{
 
 .snake{
     background-color: rgb(255, 0, 0);
+
 }
 
 .area{
     background-color: rgb(39, 39, 39);
+    transition: all 1s linear;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.hidden{
+    visibility: hidden;
 }

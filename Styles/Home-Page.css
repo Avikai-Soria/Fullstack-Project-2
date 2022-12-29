@@ -12,15 +12,17 @@ h2 {
 
 /* ----- Top Games ------ */
 
+
 .top-games {
     margin-top: 2rem;
 }
 
 .top-games img {
+    box-shadow: 0 0 50px 1px #ffffff;
     width: 15rem;
     height: 15rem;
     border-radius: 2rem;
-    padding: 1rem;
+    margin: 1.5rem;
 }
 
 /* ----- Last Played ------ */

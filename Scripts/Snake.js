@@ -10,9 +10,13 @@ const gameZone = document.getElementById('game-zone')
 var currentScore = -1;
 var gameGrid = []
 var playInteraval;
+var timerInterval;
 var snake = []
 var state = "Left"
 var nextState = "Left"
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
 
 // constract the area
 for (let i = 0; i < GAMESIZE; i++) {
@@ -29,6 +33,47 @@ reset()
 addEventListener('keydown', changeState);
 
 // help functions
+
+function startTimer(){
+    if (!timerInterval){
+        timerInterval = setInterval(updateTimer,1000)
+    }
+}
+
+function stopTimer(){
+    if (timerInterval){
+        clearInterval(timerInterval)
+        timerInterval = undefined
+    }
+}
+
+function resetTimer(){
+    secondsLabel.innerHTML = '00'
+    minutesLabel.innerHTML= '00'
+}
+
+
+function updateTimer()
+{
+    ++totalSeconds;
+    secondsLabel.innerHTML = pad(totalSeconds%60);
+    minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+}
+
+function pad(val)
+{
+    var valString = val + "";
+    if(valString.length < 2)
+    {
+        return "0" + valString;
+    }
+    else
+    {
+        return valString;
+    }
+}
+
+
 
 function updateScore() {
     const maxApples = GAMESIZE * GAMESIZE - snakeSize;
@@ -128,8 +173,9 @@ function updateState(){
 }
 
 
-function reset() {
-
+async function reset() {
+      
+    resetTimer()
     stop()
 
     currentScore = -1;
@@ -182,6 +228,7 @@ function move() {
 }
 
 function start() {
+    startTimer()
     currentDiff = getDifficulty();
     if (!playInteraval)
         playInteraval = setInterval(move, currentDiff)
@@ -207,7 +254,8 @@ function stop() {
 }
 
 function gameOver() {
-    clearInterval(playInteraval);
+    stopTimer()
+    clearInterval(playInteraval)
     const scoreDisplay = document.getElementById("scoreDisplay");
     scoreDisplay.innerText = "המשחק נגמר! הרווחת " + currentScore * 100 + " נקודות!";
     scoreDisplay.innerText += "\n";
