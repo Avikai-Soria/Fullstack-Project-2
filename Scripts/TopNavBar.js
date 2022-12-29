@@ -67,3 +67,7 @@ function userDisconnect() {
     sessionStorage.removeItem("Username");
     document.location.reload(true);
 }
+
+function notImplementedMSG() {
+    window.alert("החפעילות הזו עוד לא מוכנה. מצטערים!");
+}

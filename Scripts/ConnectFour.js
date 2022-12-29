@@ -106,17 +106,6 @@ function setPiece(col, player) {
     }
 }
 
-function setWinner(player) {
-    let winner = document.getElementById("userMSG");
-    if (player === playerHuman) {
-        winner.innerText = "ברכות! ניצחת!"
-    }
-    else {
-        winner.innerText = "המחשב ניצח אותך! בהצלחה בפעם הבאה!"
-    }
-    gameOver = true;
-}
-
 function easyPCMove() {
     for (let col = 0; col < columns; col++) {
         const testBoard = currentBoard.map(function (arr) {
@@ -191,4 +180,15 @@ function checkWinner(board) {
         }
     }
     return false;
+}
+
+function setWinner(player) {
+    let winner = document.getElementById("userMSG");
+    if (player === playerHuman) {
+        winner.innerText = "ברכות! ניצחת!"
+    }
+    else {
+        winner.innerText = "המחשב ניצח אותך! בהצלחה בפעם הבאה!"
+    }
+    gameOver = true;
 }
