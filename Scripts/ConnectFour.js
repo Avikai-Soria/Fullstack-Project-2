@@ -26,7 +26,7 @@ function setGame() {
     // Get the selected color
     const colorRadioButtons = document.getElementsByName("color");
     if (colorRadioButtons[0].checked) {
-        playerHuman =playerRed;
+        playerHuman = playerRed;
         playerAI = playerYellow;
     } // This mean the player choose red
     else {
@@ -34,16 +34,8 @@ function setGame() {
         playerAI = playerRed;
     }
 
-    let color;
-    for (let i = 0; i < colorRadioButtons.length; i++) {
-        if (colorRadioButtons[i].checked) {
-            color = colorRadioButtons[i].value;
-            break;
-        }
-    }
-
-    let winner = document.getElementById("userMSG");
-    winner.innerText = "";
+    let userMSG = document.getElementById("userMSG");
+    userMSG.innerText = "";
 
 
 
@@ -78,11 +70,14 @@ function setPieceFromElement() {
     const coords = this.id.split("-");
     const row = parseInt(coords[0]);
     const col = parseInt(coords[1]);
-    setPiece(col, playerHuman);
+    if(!setPiece(col, playerHuman)) {
+        return;
+    }
     if (gameOver === false) {
         easyPCMove();
     }
-    if (currentColumns === [0, 0, 0, 0, 0, 0, 0]) {
+
+    if (currentColumns.every(variable => { return value === 0 })) {
         gameOver = true;
         let winner = document.getElementById("userMSG");
         winner.innerText = "זה תיקו!";
@@ -94,7 +89,7 @@ function setPiece(col, player) {
     let row = currentColumns[col];
 
     if (row < 0) { // This column is already full
-        return;
+        return false;
     }
 
     currentBoard[row][col] = player[0]; //update JS board
@@ -104,6 +99,7 @@ function setPiece(col, player) {
     if (checkWinner(currentBoard)) {
         setWinner(player);
     }
+    return true;
 }
 
 function easyPCMove() {
@@ -117,7 +113,7 @@ function easyPCMove() {
         }
         testBoard[row][col] = playerHuman[0]; //update JS board
         if (checkWinner(testBoard)) {
-            setPiece(col, playerAI, currentBoard);
+            setPiece(col, playerAI);
             return;
         }
     }
@@ -131,7 +127,6 @@ function easyPCMove() {
     }
 
     setPiece(randCol, playerAI, currentBoard);
-
 }
 
 
