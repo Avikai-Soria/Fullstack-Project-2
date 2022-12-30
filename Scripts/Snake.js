@@ -230,6 +230,8 @@ function move() {
 }
 
 function start() {
+    document.getElementById('instructions').className = 'hidden'
+
     startTimer()
     currentDiff = getDifficulty();
     scoreBonus = 200 - currentDiff;
