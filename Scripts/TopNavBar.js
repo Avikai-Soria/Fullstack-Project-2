@@ -71,3 +71,13 @@ function userDisconnect() {
 function notImplementedMSG() {
     window.alert("החפעילות הזו עוד לא מוכנה. מצטערים!");
 }
+
+
+window.addEventListener("keydown", function(e) {
+    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
+
+document.getElementsByTagName('footer')[0].innerHTML = 'האתר המגניב של אביחי ואבישי!'

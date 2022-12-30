@@ -6,6 +6,7 @@ const HARDDIFF = 50;
 const DIFFLEVEL = [EASYDIFF, NORMALDIFF, HARDDIFF]
 let currentDiff = NORMALDIFF;
 const snakeSize = 5
+const maxApples = GAMESIZE * GAMESIZE - snakeSize;
 const gameZone = document.getElementById('game-zone')
 var currentScore = -1;
 let scoreBonus = 100;
@@ -78,7 +79,6 @@ function pad(val)
 
 
 function updateScore() {
-    const maxApples = GAMESIZE * GAMESIZE - snakeSize;
     currentScore += 1;
     const leftApples = maxApples - currentScore;
 
@@ -208,15 +208,18 @@ function move() {
 
     if (newHead.some(function (element) { return element >= GAMESIZE || element < 0 })) {
         // YOU LOSE!
-        gameOver();
+        gameEnd('LOSS');
         return
     }
     if (gameGrid[(newHead[1]*GAMESIZE)+newHead[0]].className === 'snake') {
         // YOU LOSE!
-        gameOver();
+        gameEnd('LOSS');
         return
     }
-
+    if (currentScore === maxApples){
+        //Victory
+        gameEnd('VICTORY');
+    }
     if (gameGrid[(newHead[1]*GAMESIZE)+newHead[0]].className === 'apple') {
         addToSnake(newHead)
         addApple()
@@ -231,7 +234,9 @@ function move() {
 
 function start() {
     document.getElementById('instructions').className = 'hidden'
-
+    if (document.getElementById('small-screen').style.visibility === 'visible'){
+        return;
+    }
     startTimer()
     currentDiff = getDifficulty();
     scoreBonus = 200 - currentDiff;
@@ -258,12 +263,18 @@ function stop() {
     state = "Left"
 }
 
-function gameOver() {
+function gameEnd(state){
     stopTimer()
     clearInterval(playInteraval)
     const userMSG = document.getElementById("userMSG");
-    userMSG.innerText = "המשחק נגמר! הרווחת " + currentScore * scoreBonus + " נקודות!";
-    userMSG.innerText += "\n";
-    userMSG.innerText += "לחידוש המשחק לחץ על המקש R."
+    if (state === 'LOSS'){
+        userMSG.innerText = "המשחק נגמר! הרווחת " + currentScore * scoreBonus + " נקודות!";
+        userMSG.innerText += "\n";
+        userMSG.innerText += "לחידוש המשחק לחץ על המקש R."
+    }
+    else{
+        userMSG.innerHTML = 'עשית את הלא יאומן! ניצחת!'
+
+    }
     updateUserInformation(currentScore * scoreBonus, totalSeconds);
 }

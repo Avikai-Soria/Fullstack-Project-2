@@ -10,6 +10,7 @@ td{
     margin: 0;
 }
 
+
 .timer{
     font-size: 3rem;
 }
@@ -49,4 +50,20 @@ td{
 
 .hidden{
     visibility: hidden;
+}
+
+
+#small-screen{
+    visibility: hidden;
+    position: fixed;
+    z-index: 10;
+
+  
+}
+@media screen and (max-width: 660px) {
+    
+    #small-screen{
+        visibility: visible;
+        position: absolute
+    }
 }

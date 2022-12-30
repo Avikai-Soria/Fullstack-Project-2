@@ -70,14 +70,14 @@ body {
 #top-bar {
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 70px;
     background-color: #333;
     color: #fff;
     font-size: 14px;
   }
   
   #logo {
-    height: 30px;
+    height: 40px;
     margin: 0 20px 0 10px;
   }
 
@@ -128,132 +128,19 @@ body {
 
 /* End of Top Bar styling */
 
-/* Footer Styling */
+/* Footer Styling*/
 
-.footer-container {
-    background-color: var(--dark-blue);
-    /*Backgroung Color */
-    padding: 2rem 0 4rem 0;
-}
-
-.footer {
-    width: 80%;
-    height: 40vh;
-    background-color: var(--dark-blue);
-    /*Backgroung Color */
+footer{
+    margin-top: 3rem;
+    font-size: 40px;
     color: #fff;
-    /*Title Font Color*/
-    flex-wrap: wrap;
-    margin: 0 auto;
-}
-
-.footer-heading {
-    display: flex;
-    flex-direction: column;
-    margin-right: 4rem;
-}
-
-.footer-heading h2 {
-    margin-bottom: 1rem;
-}
-
-.footer-heading a {
-    color: #fff;
-    /*Options Font Color*/
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-}
-
-.footer-heading a:hover {
-    color: var(--menta);
-    /*Options Hover Color*/
-    transition: 0.3s ease-out;
-}
-
-.footer-email-form h2 {
-    margin-bottom: 2rem;
-}
-
-#footer-email {
-    width: 250px;
-    height: 40px;
-    border-radius: 4px;
-    outline: none;
-    border: none;
-    padding-left: 0.5rem;
-    font-size: 1rem;
-    display: inline-block;
-    margin-right: 0.7rem;
-}
-
-#footer-email::placeholder {
-    color: var(--mid-blue);
-    /*Email Box Text Color*/
-}
-
-#footer-email-bth {
-    width: 100px;
-    height: 40px;
-    border-radius: 4px;
-    background-color: var(--menta);
-    /* Sign Up Background Color*/
-    outline: none;
-    border: none;
-    color: var(--tint-blue);
-    /*Sign Up Text Color*/
-    font-size: 1rem;
-    display: table;
+    height: 200px;
+    background-color: #002B5B;
     text-align: center;
 }
 
-#footer-email-bth:hover {
-    cursor: pointer;
-    background-color: var(--tint-blue);
-    /*Sign Up Hover Color*/
-    transition: all 0.4s ease-out;
-    color: var(--menta);
-}
 
-#footer-email-bth div {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.social-media {
-    margin-bottom: 5px;
-}
-
-.social-media img {
-    width: 30px;
-    height: 30px;
-    padding-right: 5px;
-    box-sizing: content-box;
-}
-
-@media screen and (max-width: 1150px) {
-    .footer {
-        height: 50vh;
-    }
-
-    .footer-email-form {
-        margin-top: 4rem;
-    }
-
-}
-
-
-@media screen and (max-width: 720px) {
-
-    .footer-2 {
-        display: none;
-    }
-
-    .footer-email-form {
-        margin-top: 2rem;
-    }
-
-
-}
+/* ---------------end footer style--------------------- */
 
 iframe {
     width: 100%;
@@ -261,4 +148,3 @@ iframe {
     overflow: auto;
 }
 
-/* ---------------end footer style--------------------- */
