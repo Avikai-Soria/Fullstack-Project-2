@@ -81,3 +81,17 @@ window.addEventListener("keydown", function(e) {
 
 
 document.getElementsByTagName('footer')[0].innerHTML = 'האתר המגניב של אביחי ואבישי!'
+
+let radios = document.querySelectorAll("input[name='difficulty']")
+let radioLabels = document.getElementsByClassName('diff-text')
+
+for(let i =0;i<radios.length; i++){
+    radios[i].addEventListener('change',function(){
+        for (let radioLabel of radioLabels){
+            radioLabel.style.backgroundColor = 'chocolate'
+        }
+
+        radioLabels[i].style.backgroundColor ='coral'
+
+    })
+}

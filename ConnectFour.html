@@ -14,7 +14,7 @@
     <div id="top-bar">
       <div id="login-menu">
         <a href="./SignupRegister.html">
-          <button>לכניסה או להרשמה לחץ כאן!</button>
+          <button id="sign-in">לכניסה או להרשמה לחץ כאן!</button>
         </a>
       </div>
       <div id="user-menu">
@@ -34,19 +34,25 @@
     </div>
   </header>
 
-  <h1>ארבע בשורה</h1>
+  <div class="center-div">
+    <img id="small-screen" src="./Images/small screen.png">
+  </div>
+
+  <div class="center-div">
+    <img src="./Images/04e3f399f686e98a363c7cb5036ed0ae.webp">
+  </div>
 
   <button id="start-game-button">התחל משחק</button>
 
   <!-- Radio box for selecting difficulty level -->
   <form id="diffSelect">
-    <label for="difficulty-easy">קל</label>
+    <label class="diff-text" for="difficulty-easy">קל</label>
     <input type="radio" id="difficulty-easy" name="difficulty" value="easy" checked>
     <br>
-    <label for="difficulty-medium">בינוני</label>
+    <label class="diff-text" for="difficulty-medium">בינוני</label>
     <input type="radio" id="difficulty-medium" name="difficulty" value="medium">
     <br>
-    <label for="difficulty-hard">קשה</label>
+    <label class="diff-text" for="difficulty-hard">קשה</label>
     <input type="radio" id="difficulty-hard" name="difficulty" value="hard">
   </form>
 

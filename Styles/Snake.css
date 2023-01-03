@@ -10,6 +10,10 @@ td{
     margin: 0;
 }
 
+#snake-logo{
+    height: 300px;
+    width: 760px;
+}
 
 .timer{
     font-size: 3rem;
@@ -37,7 +41,7 @@ td{
 
 .area{
     background-color: rgb(39, 39, 39);
-    transition: all 1s linear;
+    transition: all 0.5s linear;
 }
 
 #instructions{
@@ -53,6 +57,7 @@ td{
 }
 
 
+
 #small-screen{
     visibility: hidden;
     position: fixed;
@@ -66,4 +71,20 @@ td{
         visibility: visible;
         position: absolute
     }
+}
+
+.diff-text{
+    font-size: 30px;
+    font-weight: bold;
+    color: aliceblue;
+    background-color: chocolate;
+    border-radius: 10px;
+    padding: 5px;
+    border-color: rgb(255, 157, 0);
+    border-width: 4px;
+    border-style: solid;
+}
+
+input[name='difficulty']{
+    appearance: none;
 }
