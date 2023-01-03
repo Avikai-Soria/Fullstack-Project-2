@@ -43,33 +43,21 @@
   </div>
 
   <button id="start-game-button">התחל משחק</button>
-
-  <!-- Radio box for selecting difficulty level -->
-  <form id="diffSelect">
-    <label class="diff-text" for="difficulty-easy">קל</label>
-    <input type="radio" id="difficulty-easy" name="difficulty" value="easy" checked>
-    <br>
-    <label class="diff-text" for="difficulty-medium">בינוני</label>
-    <input type="radio" id="difficulty-medium" name="difficulty" value="medium">
-    <br>
-    <label class="diff-text" for="difficulty-hard">קשה</label>
-    <input type="radio" id="difficulty-hard" name="difficulty" value="hard">
-  </form>
-
-  <!-- Radio box for selecting color -->
-  <form id = "colorSelect">
-    <label for="color-red">אדום</label>
-    <input type="radio" id="color-red" name="color" value="red" checked>
-    <br>
-    <label for="color-yellow">צהוב</label>
-    <input type="radio" id="color-yellow" name="color" value="yellow">
-  </form>
-
   <h2 id="userMSG"></h2>
+  
+  <label class="timer" id="seconds">00</label>
+  <label class="timer" id="colon">:</label>
+  <label class="timer" id="minutes">00</label>
+
   <div id="board"></div>
+  <div class="instructions">
+    <h1>הוראות משחק:</h1>
+    <p>מטרת המשחק היא ליצור רצף של ארבע אסימונים בצבע שלך.</p>
+    <p>הרצף יכול להיות בשורה, עמודה או אלכסון</p>
+    <p>על מנת לשחק, לחץ על התחל משחק ובחר בעמודה בה תרצה להכניס אסימון</p>  
+  </div>
 
   <footer>
-    
   </footer>
 </body>
 <script src="./Scripts/ConnectFour.js"></script>

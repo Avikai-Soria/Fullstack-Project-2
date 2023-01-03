@@ -30,6 +30,7 @@ body {
     background-color: white;
     border-radius: 50%;
     border: 5px solid navy;
+    transition: all 0.5s linear;
 }
 
 .red {
@@ -82,4 +83,25 @@ button#start-game-button {
 
 input[name='difficulty']{
     appearance: none;
+}
+
+.instructions {
+    background-color: rgba(0,0,0,0.8) !important;
+    height: auto;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.instructions h1 {
+    color: white;
+}
+
+.instructions p {
+    color: white;
+}
+
+.timer{
+    font-size: 3rem;
 }

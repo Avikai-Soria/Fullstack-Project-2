@@ -5,6 +5,11 @@ let playerAI = playerYellow
 const rows = 6;
 const columns = 7;
 
+var timerInterval;
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+
 let gameOver;
 let currentBoard;
 let currentColumns; //keeps track of which row each column is at.
@@ -12,28 +17,51 @@ let currentColumns; //keeps track of which row each column is at.
 const startButton = document.getElementById("start-game-button");
 startButton.addEventListener("click", setGame);
 
+// Timer functions
+
+function startTimer(){
+    if (!timerInterval){
+        timerInterval = setInterval(updateTimer,1000)
+    }
+}
+
+function stopTimer(){
+    if (timerInterval){
+        clearInterval(timerInterval)
+        timerInterval = undefined
+    }
+}
+
+function resetTimer(){
+    stopTimer()
+    secondsLabel.innerHTML = '00'
+    minutesLabel.innerHTML= '00'
+    totalSeconds = 0;
+}
+
+
+function updateTimer()
+{
+    ++totalSeconds;
+    secondsLabel.innerHTML = pad(totalSeconds%60);
+    minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+}
+
+function pad(val)
+{
+    var valString = val + "";
+    if(valString.length < 2)
+    {
+        return "0" + valString;
+    }
+    else
+    {
+        return valString;
+    }
+}
+
 function setGame() {
-    // Get the selected difficulty level
-    const difficultyRadioButtons = document.getElementsByName("difficulty"); // This one might not be relevant
-    let difficulty;
-    for (let i = 0; i < difficultyRadioButtons.length; i++) {
-        if (difficultyRadioButtons[i].checked) {
-            difficulty = difficultyRadioButtons[i].value;
-            break;
-        }
-    }
-
-    // Get the selected color
-    const colorRadioButtons = document.getElementsByName("color");
-    if (colorRadioButtons[0].checked) {
-        playerHuman = playerRed;
-        playerAI = playerYellow;
-    } // This mean the player choose red
-    else {
-        playerHuman = playerYellow;
-        playerAI = playerRed;
-    }
-
+    
     let userMSG = document.getElementById("userMSG");
     userMSG.innerText = "";
 
@@ -59,6 +87,8 @@ function setGame() {
         }
         currentBoard.push(row);
     }
+    resetTimer()
+    startTimer()
 }
 
 function setPieceFromElement() {
@@ -77,7 +107,7 @@ function setPieceFromElement() {
         easyPCMove();
     }
 
-    if (currentColumns.every(variable => { return value === 0 })) {
+    if (currentColumns.every(x => x === 0)) {
         gameOver = true;
         let winner = document.getElementById("userMSG");
         winner.innerText = "זה תיקו!";
@@ -103,6 +133,23 @@ function setPiece(col, player) {
 }
 
 function easyPCMove() {
+    // Check if I can win
+    for (let col = 0; col < columns; col++) {
+        const testBoard = currentBoard.map(function (arr) {
+            return arr.slice();
+        });
+        let row = currentColumns[col];
+        if (row < 0) {
+            continue;
+        }
+        testBoard[row][col] = playerAI[0]; //update JS board
+        if (checkWinner(testBoard)) {
+            setPiece(col, playerAI);
+            return;
+        }
+    }
+
+    // Checks if I can block win from opponent
     for (let col = 0; col < columns; col++) {
         const testBoard = currentBoard.map(function (arr) {
             return arr.slice();
@@ -179,6 +226,7 @@ function checkWinner(board) {
 
 function setWinner(player) {
     let winner = document.getElementById("userMSG");
+    stopTimer();
     if (player === playerHuman) {
         winner.innerText = "ברכות! ניצחת!"
     }
@@ -186,4 +234,5 @@ function setWinner(player) {
         winner.innerText = "המחשב ניצח אותך! בהצלחה בפעם הבאה!"
     }
     gameOver = true;
+    updateUserInformation(10000, totalSeconds);
 }

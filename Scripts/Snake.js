@@ -54,7 +54,6 @@ function resetTimer(){
     secondsLabel.innerHTML = '00'
     minutesLabel.innerHTML= '00'
     totalSeconds = 0;
-    
 }
 
 
