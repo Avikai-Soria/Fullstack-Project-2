@@ -227,12 +227,14 @@ function checkWinner(board) {
 function setWinner(player) {
     let winner = document.getElementById("userMSG");
     stopTimer();
+    let score = 0;
     if (player === playerHuman) {
         winner.innerText = "ברכות! ניצחת!"
+        score = 10000;
     }
     else {
         winner.innerText = "המחשב ניצח אותך! בהצלחה בפעם הבאה!"
     }
     gameOver = true;
-    updateUserInformation(10000, totalSeconds);
+    updateUserInformation(score, totalSeconds);
 }
