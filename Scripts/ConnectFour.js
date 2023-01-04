@@ -104,7 +104,7 @@ function setPieceFromElement() {
         return;
     }
     if (gameOver === false) {
-        easyPCMove();
+        setTimeout(easyPCMove,500)
     }
 
     if (currentColumns.every(x => x === 0)) {
